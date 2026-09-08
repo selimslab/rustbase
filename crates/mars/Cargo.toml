@@ -1,0 +1,30 @@
+[package]
+name = "mars"
+description = "Template crate for the mars Rust base"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+
+[lints]
+# Workspace lints are NOT inherited implicitly; this line is required.
+workspace = true
+
+[dependencies]
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lib]
+name = "mars"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mars"
+path = "src/main.rs"

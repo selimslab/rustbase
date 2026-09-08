@@ -1,0 +1,57 @@
+[workspace]
+resolver = "3"
+members = ["crates/mars"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.91"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/selimslab/rustbase"
+authors = ["Selim <hselimozturk@gmail.com>"]
+
+[workspace.dependencies]
+anyhow = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+# dev. Pinned here so a crate opts in with `insta.workspace = true`;
+# insta is unused today, proptest is used by crates/mars.
+insta = "1"
+proptest = "1"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_docs = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+unreachable_pub = "warn"
+missing_debug_implementations = "warn"
+unused_qualifications = "warn"
+
+[workspace.lints.clippy]
+# Group lints need priority = -1 so the individual lints below can override them.
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+
+# Curated restriction lints. Warn, not deny, so day-one work is never blocked.
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+todo = "warn"
+unimplemented = "warn"
+indexing_slicing = "warn"
+float_cmp = "warn"
+mem_forget = "warn"
+dbg_macro = "warn"
+print_stdout = "warn"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+
+# Optimize dependencies even in dev builds; they rarely need debugging.
+[profile.dev.package."*"]
+opt-level = 2

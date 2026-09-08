@@ -1,0 +1,14 @@
+[alias]
+lint = "clippy --workspace --all-targets --all-features"
+xtest = "nextest run --workspace"
+cov = "llvm-cov nextest --workspace"
+
+[target.'cfg(all())']
+rustflags = []
+# CI sets RUSTFLAGS="-Dwarnings" via env instead of hardcoding it here, so local
+# builds stay warning-tolerant while CI still fails on warnings.
+# rustflags = ["-Dwarnings"]
+
+# Faster linking on macOS. Needs: brew install llvm  (or cargo install sold)
+# [target.aarch64-apple-darwin]
+# rustflags = ["-C", "link-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld"]

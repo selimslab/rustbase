@@ -1,0 +1,11 @@
+edition = "2024"
+max_width = 100
+use_field_init_shorthand = true
+use_try_shorthand = true
+newline_style = "Unix"
+
+# Nightly-only. Uncomment and run `cargo +nightly fmt` to use them;
+# on stable these are silently ignored.
+# group_imports = "StdExternalCrate"
+# imports_granularity = "Crate"
+# wrap_comments = true

@@ -1,0 +1,5 @@
+[formatting]
+align_entries = false
+indent_string = "  "
+# Reordering keys in Cargo.toml churns diffs for no gain.
+reorder_keys = false

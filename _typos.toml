@@ -1,0 +1,2 @@
+# Whitelist project-specific jargon here, e.g. `mars = "mars"`.
+[default.extend-words]
