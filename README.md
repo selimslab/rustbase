@@ -38,6 +38,8 @@ Cargo aliases mirror the short ones: `cargo lint`, `cargo xtest`, `cargo cov`.
 - **CI**: fmt, clippy, test matrix (Ubuntu + macOS), coverage, typos, deny.
 - **Hook**: `.githooks/pre-commit` runs fmt + clippy only, to stay fast.
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for why the template is built this way.
+
 ## Using this as a base
 
 1. Rename the crate: `crates/mars/` → your name, and update `name` in its `Cargo.toml`
